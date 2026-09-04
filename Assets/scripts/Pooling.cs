@@ -10,7 +10,7 @@ public class Pooling : MonoBehaviour
     [SerializeField] private Bullet Bulletprefab;
     [SerializeField] private EnemyBullet EbulletPrefab;
     [SerializeField] private Transform bullettrans;
-    [SerializeField] private Transform enemyBulletTrans;
+    //public Transform enemyBulletTrans;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,28 +43,28 @@ public class Pooling : MonoBehaviour
         }
     }
 
-    public EnemyBullet EBPool
-    {
-        get
-        {
-            EnemyBullet ebullet = null;
-            if (pool.Count == 0)
-            {
-                ebullet = Instantiate(EbulletPrefab, enemyBulletTrans);
-                ebullet.transform.SetParent(null);
-                Epool.Enqueue(ebullet);
-            }
-            ebullet = Epool.Dequeue();
-            ebullet.transform.position = enemyBulletTrans.position;
-            ebullet.gameObject.SetActive(true);
+    //public EnemyBullet EBPool
+    //{
+    //    get
+    //    {
+    //        EnemyBullet ebullet = null;
+    //        if (pool.Count == 0)
+    //        {
+    //            ebullet = Instantiate(EbulletPrefab, enemyBulletTrans);
+    //            ebullet.transform.SetParent(null);
+    //            Epool.Enqueue(ebullet);
+    //        }
+    //        ebullet = Epool.Dequeue();
+    //        ebullet.transform.position = enemyBulletTrans.position;
+    //        ebullet.gameObject.SetActive(true);
 
-            return ebullet;
-        }
-        set
-        {
-            EnemyBullet ebullet = value;
-            value.gameObject.SetActive(false);
-            Epool.Enqueue(value);
-        }
-    }
+    //        return ebullet;
+    //    }
+    //    set
+    //    {
+    //        EnemyBullet ebullet = value;
+    //        value.gameObject.SetActive(false);
+    //        Epool.Enqueue(value);
+    //    }
+    //}
 }

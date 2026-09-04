@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
+    public float Hp = 100;
     private Vector2 movementV;
 
     private void Update()
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("bbbbbb");
+        Hp -= 1;
     }
 
 }
