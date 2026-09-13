@@ -1,31 +1,23 @@
 using UnityEngine;
 
-public class EnemySHoot : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float Freq;
     [SerializeField] private float Ampl;
-    [SerializeField] private GameObject BulletPrefab;
-    [SerializeField] private Transform BulletPoint;
+
     public int Hp = 100;
     private float SinCent;
-    private float cooldownTIme;
 
     private void Start()
     {
-        SinCent=transform.position.x;
+        SinCent = this.gameObject.transform.position.x;
+        this.gameObject.transform.SetParent(null);
     }
 
-    void Update()
+    private void Update()
     {
-        cooldownTIme += Time.deltaTime;
-        if(cooldownTIme > 1.7f)
-        {
-            cooldownTIme = 0;
-            Instantiate(BulletPrefab,BulletPoint); 
-        }
         Move();
-
         if (Hp <= 0)
         {
             Debug.Log("died");
@@ -37,24 +29,29 @@ public class EnemySHoot : MonoBehaviour
     private void Move()
     {
         Vector2 mpos = transform.position;
-        float sin = Mathf.Sin(mpos.y*Freq)*Ampl;
+        float sin = Mathf.Sin(mpos.y * Freq) * Ampl;
         mpos.y -= speed * Time.deltaTime;
-        mpos.x=SinCent+sin;
+        mpos.x = SinCent + sin;
         transform.position = mpos;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("EnemyBullet"))
+        if (collision.gameObject.CompareTag("EnemyBullet"))
         {
-            Debug.Log("ccccccc");
             return;
         }
 
-        else if(collision.gameObject.CompareTag("Bullet"))
+        else if (collision.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("aaaaaaa");
             Hp--;
+        }
+
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("collided");
+            GameManager.instance.KillCount++;
+            Destroy(gameObject);
         }
     }
 }

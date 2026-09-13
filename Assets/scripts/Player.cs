@@ -31,8 +31,19 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("bbbbbb");
-        Hp -= 1;
+
+        if(collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            Debug.Log("bbbbbb");
+            Hp -= 1;
+        }
+
+        if(collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("ffffffff");
+            Hp -= 10;
+        }
+
     }
 
 }

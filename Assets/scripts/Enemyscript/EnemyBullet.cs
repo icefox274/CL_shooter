@@ -25,17 +25,12 @@ public class EnemyBullet : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("eeeeeee");
+            return;
         }
 
         else if(collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("hit");
-
         }
     }
 
