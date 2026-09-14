@@ -10,8 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e21fc4f7575b95d4f96115ac93256b68, type: 3}
-  m_Name: EnemyTypes
+  m_Name: test
   m_EditorClassIdentifier: Assembly-CSharp::Enemytype
-  EnemyPrefab: {fileID: 0}
-  WeaponPrefab: {fileID: 0}
-  speed: 0
+  EnemyPrefab: {fileID: 1458692957913686242, guid: 5e3916a25f007b1409c439b34f98268f, type: 3}

@@ -4,7 +4,6 @@ using UnityEngine;
 public class Enemytype : ScriptableObject
 {
     public GameObject EnemyPrefab;
-    public GameObject WeaponPrefab;
-    public float speed;
+   // public GameObject WeaponPrefab;
 
 }

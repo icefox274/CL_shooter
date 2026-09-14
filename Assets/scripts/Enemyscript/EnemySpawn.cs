@@ -1,54 +1,36 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class EnemySpawn : MonoBehaviour
 {
-    private float timer=0;
-    [SerializeField] GameObject Enemy;
-    [SerializeField] private float Spawntime;
-    [SerializeField] Transform[] SpawnPoint;
-    private float timermultiplier=0;
-    private int Currentlv=1;
+    [SerializeField] private List<Enemytype> enemytypes;
+    [SerializeField] private float spawnInterval=2f;
+    [SerializeField] private List<Transform> SpawnPoints;
 
-    void Update()
+    private EnemyFactory Factory;
+    private float spawnTimer;
+
+
+    private void Start()
     {
-        timer += Time.deltaTime;
+        Factory = new EnemyFactory();
+    }
 
-        if (timer >= Spawntime)
+    private void Update()
+    {
+        spawnTimer += Time.deltaTime;
+        if(spawnTimer<=spawnInterval)
         {
-            timer = 0f;
-            SummonENemy();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F10))
-        {
-            SummonENemy();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F11))
-        {
-            GameManager.instance.Playerlv++;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F12))
-        {
-            GameManager.instance.Playerlv--;
-        }
-
-        if (Currentlv!=GameManager.instance.Playerlv)
-        {
-            if(Spawntime<=0.9f)
-            {
-                return;
-            }
-            timermultiplier += 0.005f;
-            Spawntime -= timermultiplier;
-            Currentlv = GameManager.instance.Playerlv;
+            SpawnEnemy();
+            spawnTimer = 0f;
         }
     }
 
-    private void SummonENemy()
+    private void SpawnEnemy()
     {
-        int n = Random.Range(0, SpawnPoint.Length);
-        Instantiate(Enemy,SpawnPoint [n]);
+        Enemytype enemytype = enemytypes[Random.Range(0, enemytypes.Count)];
+        Transform SpawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)];
+
+        GameObject enemy = Factory.CreateEnemy(enemytype, SpawnPoint);
     }
 }
