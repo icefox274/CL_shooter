@@ -26,5 +26,17 @@ public class GameManager : MonoBehaviour
             Debug.Log("insert boss here");
             bossmultiplier++;
         }
+
+
+        //디버깅용 코드 VVV
+        if(Input.GetKeyDown(KeyCode.F10))
+        {
+            Playerlv++;
+        }
+
+        if(Input.GetKey(KeyCode.F11))
+        {
+            KillCount++;
+        }
     }
 }

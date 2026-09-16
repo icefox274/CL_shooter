@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     public void OnAttack()
     {
-            Bullet b = Pooling.Instance.BPool;
+        Bullet b = Pooling.Instance.BPool;
     }
 
     private void Movement()
@@ -29,21 +29,17 @@ public class Player : MonoBehaviour
         transform.Translate(v2 * Time.deltaTime * speed);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TakeDamage(float Damage)
     {
-
-        if(collision.gameObject.CompareTag("EnemyBullet"))
-        {
-            Debug.Log("bbbbbb");
-            Hp -= 1;
-        }
-
-        if(collision.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("ffffffff");
-            Hp -= 10;
-        }
-
+        Hp-=Damage;
     }
 
+    public void Heal(float Heal)
+    {
+        if(Hp<=100)
+        {
+            Hp = 100;
+        }
+        Hp += Heal;
+    }
 }

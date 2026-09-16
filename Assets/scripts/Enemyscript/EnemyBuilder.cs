@@ -6,15 +6,15 @@ public class EnemyBuilder
     GameObject WeaponPrefab;
     Transform Spawnposition;
 
-    public EnemyBuilder SetEnemyPrefabs(GameObject EnemyPrefab)
+    public EnemyBuilder SetEnemyPrefabs(GameObject Enemyprefab)
     {
-        EnemyPrefab = Enemyprefab;
+        this.Enemyprefab = Enemyprefab;
         return this;
     }
 
     public EnemyBuilder SetTransform(Transform Setpoint)
     {
-        Setpoint=Spawnposition; 
+        Spawnposition=Setpoint; 
         return this;
     }
 
@@ -26,7 +26,11 @@ public class EnemyBuilder
 
     public GameObject Build()
     {
-        GameObject instance = GameObject.Instantiate(Enemyprefab,Spawnposition);
+        Debug.Log($"{Enemyprefab == null}");
+        GameObject instance = GameObject.Instantiate(Enemyprefab);
+
+        Debug.Log($"{Spawnposition == null}");
+        instance.transform.position = (Vector3)Spawnposition.position;
 
         return instance;
     }

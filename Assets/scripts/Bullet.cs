@@ -4,6 +4,12 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed;
     private float burntimer =0f;
+
+    private void Start()
+    {
+        Pooling.Instance.BPool = this;
+    }
+
     void Update()
     {
         transform.Translate(Vector2.up * Time.deltaTime * speed);

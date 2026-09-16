@@ -37,12 +37,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyBullet"))
-        {
-            return;
-        }
-
-        else if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             Hp--;
         }
@@ -50,6 +45,8 @@ public class EnemyMovement : MonoBehaviour
         else if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("collided");
+            collision.TryGetComponent<Player>(out Player p);
+            p.TakeDamage(5);
             GameManager.instance.KillCount++;
             Destroy(gameObject);
         }

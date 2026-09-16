@@ -42,29 +42,4 @@ public class Pooling : MonoBehaviour
             pool.Enqueue(value);
         }
     }
-
-    //public EnemyBullet EBPool
-    //{
-    //    get
-    //    {
-    //        EnemyBullet ebullet = null;
-    //        if (pool.Count == 0)
-    //        {
-    //            ebullet = Instantiate(EbulletPrefab, enemyBulletTrans);
-    //            ebullet.transform.SetParent(null);
-    //            Epool.Enqueue(ebullet);
-    //        }
-    //        ebullet = Epool.Dequeue();
-    //        ebullet.transform.position = enemyBulletTrans.position;
-    //        ebullet.gameObject.SetActive(true);
-
-    //        return ebullet;
-    //    }
-    //    set
-    //    {
-    //        EnemyBullet ebullet = value;
-    //        value.gameObject.SetActive(false);
-    //        Epool.Enqueue(value);
-    //    }
-    //}
 }
