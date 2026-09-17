@@ -42,6 +42,13 @@ public class EnemyMovement : MonoBehaviour
             Hp--;
         }
 
+        else if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            Debug.Log("collided");
+            GameManager.instance.KillCount++;
+            Destroy(gameObject);
+        }
+
         else if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("collided");

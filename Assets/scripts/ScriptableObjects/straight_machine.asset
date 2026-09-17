@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e21fc4f7575b95d4f96115ac93256b68, type: 3}
-  m_Name: test
+  m_Name: straight_machine
   m_EditorClassIdentifier: Assembly-CSharp::Enemytype
-  EnemyPrefab: {fileID: 1458692957913686242, guid: 5e3916a25f007b1409c439b34f98268f, type: 3}
+  EnemyPrefab: {fileID: 1458692957913686242, guid: b84939507987abd48a5c939efd2982d9, type: 3}
+  WeaponPrefab: {fileID: 239213574028778281, guid: ba71570cbabfc7c4797c1c0d4e3512ee, type: 3}

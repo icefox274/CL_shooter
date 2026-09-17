@@ -10,6 +10,13 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Movement();
+
+        if(Hp<=0)
+        {
+            Debug.Log("player died");
+            speed = 0;
+            GameManager.instance.GameOverLoad();
+        }
     }
 
     public void OnMove(InputValue V)

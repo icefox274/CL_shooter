@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,10 +8,14 @@ public class GameManager : MonoBehaviour
     public int Playerlv;
     private float lvmultiplier =1;
     private float bossmultiplier = 1;
+    public bool Gameover;
+    [SerializeField] private Image Gameoverimage;
 
     private void Start()
     {
         instance= this;
+        Gameoverimage.gameObject.SetActive(false);
+        Gameover = false;
     }
 
     void Update()
@@ -38,5 +43,11 @@ public class GameManager : MonoBehaviour
         {
             KillCount++;
         }
+    }
+
+    public void GameOverLoad ()
+    {
+        Gameoverimage.gameObject.SetActive(true);
+        Gameover = true;
     }
 }

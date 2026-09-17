@@ -18,12 +18,6 @@ public class EnemyBuilder
         return this;
     }
 
-    public EnemyBuilder SetWeaponPrefabs(GameObject Weaponprefab)
-    {
-        Weaponprefab = WeaponPrefab;
-        return this;
-    }
-
     public GameObject Build()
     {
         Debug.Log($"{Enemyprefab == null}");

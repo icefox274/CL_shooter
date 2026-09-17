@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField] Enemytype enemytypes;
+    [SerializeField] private List<Enemytype> enemytypes;
     [SerializeField] private float spawnInterval=3f;
     [SerializeField] private List<Transform> SpawnPoints;
 
@@ -41,8 +41,13 @@ public class EnemySpawn : MonoBehaviour
 
     private void SpawnEnemy()
     {
+        if(GameManager.instance.Gameover==true)
+        {
+            return;
+        }
+
         Transform SpawnPoint = SpawnPoints[Random.Range(0, SpawnPoints.Count)];
 
-        GameObject enemy = Factory.CreateEnemy(enemytypes, SpawnPoint);
+        GameObject enemy = Factory.CreateEnemy(enemytypes[Random.Range(0, enemytypes.Count)], SpawnPoint);
     }
 }
