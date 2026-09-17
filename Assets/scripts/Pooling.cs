@@ -6,9 +6,7 @@ public class Pooling : MonoBehaviour
 {
     public static Pooling Instance;
     public Queue<Bullet> pool = new Queue<Bullet>();
-    public Queue<EnemyBullet> Epool = new Queue<EnemyBullet>();
     [SerializeField] private Bullet Bulletprefab;
-    [SerializeField] private EnemyBullet EbulletPrefab;
     [SerializeField] private Transform bullettrans;
     //public Transform enemyBulletTrans;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
