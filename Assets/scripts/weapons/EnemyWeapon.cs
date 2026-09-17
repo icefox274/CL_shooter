@@ -1,16 +1,20 @@
 using UnityEngine;
 
-public class Enemyweapon : Weapon
+public class Enemyweapon: Weapon
 {
-    ProjectileStrat strat;
-    private float fireTimer;
+    private float fireTimer=0;
+
+    private void Start()
+    {
+
+    }
     private void Update()
     {
-        fireTimer = Time.deltaTime;
+        fireTimer += Time.deltaTime;
 
-        if (fireTimer >= strat.fireRate)
+        if (fireTimer >= strate.Firerate)
         {
-            strat.Fire(firePoint);
+            strate.Fire(firePoint);
             fireTimer = 0f;
         }
     }

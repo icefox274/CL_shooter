@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
     public void OnAttack()
     {
-        Bullet b = Pooling.Instance.BPool;
+        Bullet b0 = Pooling.Instance.BPool;
     }
 
     private void Movement()
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 
     public void Heal(float Heal)
     {
-        if(Hp<=100)
+        if(Hp>=100)
         {
             Hp = 100;
         }

@@ -3,10 +3,10 @@ using UnityEngine;
 public abstract class ProjectileStrat : ScriptableObject
 {
     [SerializeField] protected int dAmage=1;
-    public float fireRate=2;
-    [SerializeField] private float projetileSpeed;
-    [SerializeField] private float ProjectileLifetime;
-    [SerializeField] private GameObject BulletPrefab;
+    [SerializeField] protected float fireRate=2;
+    [SerializeField] protected float projetileSpeed;
+    [SerializeField] protected float ProjectileLifetime;
+    [SerializeField] protected GameObject BulletPrefab;
 
     public int Damage => dAmage;
     public float Firerate=> fireRate;
@@ -17,6 +17,5 @@ public abstract class ProjectileStrat : ScriptableObject
     }
 
     public abstract void Fire(Transform FirePosition);
-
 
 }

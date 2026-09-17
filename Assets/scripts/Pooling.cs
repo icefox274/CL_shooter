@@ -38,6 +38,7 @@ public class Pooling : MonoBehaviour
         set
         {
             Bullet bullet = value;
+            bullet.transform.rotation = Quaternion.identity;
             value.gameObject.SetActive(false);
             pool.Enqueue(value);
         }

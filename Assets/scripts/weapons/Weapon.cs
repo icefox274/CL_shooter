@@ -2,17 +2,17 @@ using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] private ProjectileStrat strat;
+    [SerializeField] protected ProjectileStrat strate;
     [SerializeField] protected Transform firePoint;
 
     private void Start()
     {
-        strat.Init();
+        strate.Init();
     }
 
     public void SetWeaponStrats(ProjectileStrat projectile)
     {
-        strat = projectile;
+        strate = projectile;
         projectile.Init();
     }
 }
