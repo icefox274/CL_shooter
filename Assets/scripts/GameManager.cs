@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private float lvmultiplier =1;
     private float bossmultiplier = 1;
     public bool Gameover;
+    public bool BossActive;
     [SerializeField] private Image Gameoverimage;
 
     private void Start()

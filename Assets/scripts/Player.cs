@@ -21,12 +21,19 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputValue V)
     {
-        movementV = V.Get<Vector2>();
+        if (GameManager.instance.Gameover == false)
+        {
+            movementV = V.Get<Vector2>();
+        }
+
     }
 
     public void OnAttack()
     {
-        Bullet b0 = Pooling.Instance.BPool;
+        if (GameManager.instance.Gameover == false)
+        {
+            Bullet b0 = Pooling.Instance.BPool;
+        }
     }
 
     private void Movement()

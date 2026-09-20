@@ -41,7 +41,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if(GameManager.instance.Gameover==true)
+        if(GameManager.instance.Gameover==true||GameManager.instance.BossActive==true)
         {
             return;
         }

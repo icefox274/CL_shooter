@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class DIsplayUI : MonoBehaviour
 {
@@ -9,5 +11,14 @@ public class DIsplayUI : MonoBehaviour
     {
         Score.text = ($"SCORE: {GameManager.instance.KillCount}");
         Level.text=($"LEVEL: {GameManager.instance.Playerlv}");
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene("Game");
+    }
+    public void Returnmenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
