@@ -31,8 +31,22 @@ public class Boss : MonoBehaviour
         }
     }
 
+    void checkStageCOmplete()
+    {
+        if (stages[CurrentStage].IsComplete())
+        {
+            AdvanceNextStage();
+        }
+    }
+
     void StartSTage()
     {
+        stages[CurrentStage].StartStage();
+        Sheild.enabled = !stages[CurrentStage].IsBossSHeildon;
+    }
 
+    void BossDefeated()
+    {
+        Destroy(gameObject);
     }
 }

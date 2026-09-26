@@ -1,16 +1,36 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BossStage : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public List<EnemyMovement> enemies;
+    public bool IsBossSHeildon = true;
+
+    private void Start()
     {
-        
+        foreach (var system in enemies)
+        {
+            system.gameObject.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartStage()
     {
-        
+        foreach (var system in enemies)
+        {
+            system.gameObject.SetActive(true);
+        }
+    }
+
+    public bool IsComplete ()
+    {
+        foreach (var system in enemies)
+        {
+            if (system !=null)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
