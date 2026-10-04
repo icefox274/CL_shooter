@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 public class BossStage : MonoBehaviour
 {
-    public List<EnemyMovement> enemies;
+    public List<BossParts> Parts;
     public bool IsBossSHeildon = true;
 
     private void Start()
     {
-        foreach (var system in enemies)
+        foreach (var system in Parts)
         {
             system.gameObject.SetActive(false);
         }
@@ -16,7 +16,7 @@ public class BossStage : MonoBehaviour
 
     public void StartStage()
     {
-        foreach (var system in enemies)
+        foreach (var system in Parts)
         {
             system.gameObject.SetActive(true);
         }
@@ -24,11 +24,16 @@ public class BossStage : MonoBehaviour
 
     public bool IsComplete ()
     {
-        foreach (var system in enemies)
+        foreach (var system in Parts)
         {
             if (system !=null)
             {
                 return false;
+            }
+
+            if(system.Isdestroyed == true)
+            {
+                return true;
             }
         }
         return true;

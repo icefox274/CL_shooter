@@ -20,10 +20,8 @@ public class EnemyBuilder
 
     public GameObject Build()
     {
-        Debug.Log($"{Enemyprefab == null}");
         GameObject instance = GameObject.Instantiate(Enemyprefab);
 
-        Debug.Log($"{Spawnposition == null}");
         instance.transform.position = (Vector3)Spawnposition.position;
 
         return instance;

@@ -5,7 +5,7 @@ public class enemyBulletTrack : MonoBehaviour
 {
     [SerializeField] private float speed;
     private Transform target;
-    [SerializeField] private float hp = 3;
+    public float hp = 3;
     [SerializeField] private GameObject Item;
 
     private void Start()
@@ -22,7 +22,7 @@ public class enemyBulletTrack : MonoBehaviour
             float n = Random.Range(0, 10);
             if (n >= 3)
             {
-                Instantiate(Item);
+                Instantiate(Item,transform.position,Quaternion.identity);
             }
 
             GameManager.instance.KillCount++;
@@ -35,6 +35,8 @@ public class enemyBulletTrack : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            collision.TryGetComponent<EnemyMovement>(out EnemyMovement e);
+            e.Hp -= 45;
             Destroy(gameObject);
         }
 
