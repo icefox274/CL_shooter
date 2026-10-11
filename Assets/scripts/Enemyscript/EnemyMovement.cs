@@ -5,6 +5,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float Freq;
     [SerializeField] private float Ampl;
+    [SerializeField] private GameObject explosion;
+    [SerializeField] AudioSource AudioSource;
+    [SerializeField] AudioClip hitsound;
 
     public int Hp = 100;
     private float SinCent;
@@ -22,7 +25,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.Log("died");
             GameManager.instance.KillCount++;
-            Destroy(gameObject);
+            die();
         }
     }
 
@@ -35,10 +38,17 @@ public class EnemyMovement : MonoBehaviour
         transform.position = mpos;
     }
 
+    private void die()
+    {
+        Instantiate(explosion,transform.position,Quaternion.identity);
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            AudioSource.PlayOneShot(hitsound);
             Hp--;
         }
 
@@ -46,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Debug.Log("collided");
             GameManager.instance.KillCount++;
-            Destroy(gameObject);
+            die();
         }
 
         else if (collision.gameObject.CompareTag("Player"))
@@ -54,8 +64,7 @@ public class EnemyMovement : MonoBehaviour
             Debug.Log("collided");
             collision.TryGetComponent<Player>(out Player p);
             p.TakeDamage(5);
-            GameManager.instance.KillCount++;
-            Destroy(gameObject);
+            die();
         }
     }
 }

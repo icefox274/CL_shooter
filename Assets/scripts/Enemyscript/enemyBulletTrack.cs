@@ -7,6 +7,9 @@ public class enemyBulletTrack : MonoBehaviour
     private Transform target;
     public float hp = 3;
     [SerializeField] private GameObject Item;
+    [SerializeField] private GameObject explosion;
+    [SerializeField] AudioSource AudioSource;
+    [SerializeField] AudioClip hitsound;
 
     private void Start()
     {
@@ -26,10 +29,15 @@ public class enemyBulletTrack : MonoBehaviour
             }
 
             GameManager.instance.KillCount++;
-            Destroy(gameObject);
+            die();
         }
     }
 
+    private void die()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -43,14 +51,15 @@ public class enemyBulletTrack : MonoBehaviour
         else if(collision.gameObject.CompareTag("Bullet"))
         {
             Debug.Log("hittrack");
-            hp-=1;
+            AudioSource.PlayOneShot(hitsound);
+            hp -=1;
         }
 
         else if (collision.gameObject.CompareTag("Player"))
         {
             collision.TryGetComponent<Player>(out Player P);
             P.TakeDamage(30);
-            Destroy(gameObject);
+            die();
         }
     }
 }

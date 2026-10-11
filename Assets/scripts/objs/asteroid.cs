@@ -20,7 +20,6 @@ public class asteroid : MonoBehaviour
         {
             collision.TryGetComponent<EnemyMovement>(out EnemyMovement e);
             e.Hp -= 45;
-            GameManager.instance.KillCount--;
             Destroy(gameObject);
         }
 
@@ -28,7 +27,6 @@ public class asteroid : MonoBehaviour
         {
             collision.TryGetComponent<enemyBulletTrack>(out enemyBulletTrack e2);
             e2.hp -= 45;
-            GameManager.instance.KillCount--;
             Destroy(gameObject);
         }
 

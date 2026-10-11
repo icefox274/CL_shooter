@@ -6,6 +6,8 @@ public class StartPoint : MonoBehaviour
     [SerializeField] private GameObject spawnHandler;
     [SerializeField] private DisplayHP HPD;
     [SerializeField] private Slider hpslider;
+    [SerializeField] private AudioSource AudioSource;
+    [SerializeField] private AudioClip Clip;
     private bool started;
 
     private void Start()
@@ -35,7 +37,12 @@ public class StartPoint : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
+            if (started == true)
+            {
+                return;
+            }
             started = true;
+            AudioSource.PlayOneShot(Clip);
         }
     }
 }
